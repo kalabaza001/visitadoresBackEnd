@@ -22,7 +22,7 @@ var DoctorCtrl = require('./controllers/doctores');
 var Mutualistamodel = require('./models/mutualista')(app, mongoose);
 var MutualistaCtrl  = require('./controllers/mutualistas');
 
-var EspecialidadModel = require('./models/especialidad');
+var EspecialidadModel = require('./models/especialidad')(app, mongoose);
 var EspecialidadCtrl  = require('./controllers/especialidades');
 
 // Example Route
@@ -53,8 +53,8 @@ visitadores.route('/mutualista/:id')
  .put(MutualistaCtrl.updateMutualista)
  .delete(MutualistaCtrl.deleteMutualista);
 
-/*visitadores.route('/especialidades')
-  .post(EspecialidadCtrl.addEspecialidad);*/
+visitadores.route('/especialidades')
+  .post(EspecialidadCtrl.addEspecialidad);
 
 app.use('/api', visitadores);
   
