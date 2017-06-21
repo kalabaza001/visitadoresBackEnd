@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var DBDoctor  = mongoose.model('Doctor');
 
 //POST - Insert a new Doctor in the DB
+//TEST COMMIT
 exports.addDoctor = function(req, res) {
 	console.log('POST');
 	console.log(req.body);
