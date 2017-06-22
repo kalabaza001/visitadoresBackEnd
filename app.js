@@ -25,6 +25,9 @@ var MutualistaCtrl  = require('./controllers/mutualistas');
 var EspecialidadModel = require('./models/especialidad')(app, mongoose);
 var EspecialidadCtrl  = require('./controllers/especialidades');
 
+var SucursalModel = require('./models/sucursal')(app, mongoose);
+var SucursalCtrl  = require('./controllers/sucursales');
+
 // Example Route
 /*var router = express.Router();
 router.get('/', function(req, res) {
@@ -54,7 +57,20 @@ visitadores.route('/mutualista/:id')
  .delete(MutualistaCtrl.deleteMutualista);
 
 visitadores.route('/especialidades')
+  .get(EspecialidadCtrl.findAllEspecialidades)
   .post(EspecialidadCtrl.addEspecialidad);
+
+visitadores.route('/especialidad/:id')
+.get(EspecialidadCtrl.findById)
+.put(EspecialidadCtrl.updateEspecialidad)
+.delete(EspecialidadCtrl.deleteEspecialidad);
+
+visitadores.route('/sucursales')
+  .post(SucursalCtrl.addSucursal);
+
+
+
+
 
 app.use('/api', visitadores);
   

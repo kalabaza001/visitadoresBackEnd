@@ -75,7 +75,7 @@ exports.deleteDoctor = function(req, res) {
 	DBDoctor.findById(req.params.id, function(err, doctor) {
 		doctor.remove(function(err) {
 			if(err) return res.send(500, err.message);
-      res.status(200);
+      res.status(200).jsonp("Se borro bien");
 		})
 	});
 };
