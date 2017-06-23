@@ -1,7 +1,7 @@
 //Doctores
 var mongoose = require('mongoose');
 var DBDoctor  = mongoose.model('Doctor');
-
+//TEST 
 //POST - Insert a new Doctor in the DB
 //TEST COMMIT
 exports.addDoctor = function(req, res) {
