@@ -28,6 +28,9 @@ var EspecialidadCtrl  = require('./controllers/especialidades');
 var SucursalModel = require('./models/sucursal')(app, mongoose);
 var SucursalCtrl  = require('./controllers/sucursales');
 
+var VisitadorModel = require('./models/visitador')(app, mongoose);
+var VisitadorCtrl  = require('./controllers/visitadores');
+
 // Example Route
 /*var router = express.Router();
 router.get('/', function(req, res) {
@@ -36,43 +39,49 @@ router.get('/', function(req, res) {
 app.use(router);*/
 
 // API routes
-var visitadores = express.Router();
+var rutas = express.Router();
 
-visitadores.route('/doctores')
+rutas.route('/doctores')
   .get(DoctorCtrl.findAllDoctores)
   .post(DoctorCtrl.addDoctor);
 
-visitadores.route('/doctor/:id')
+rutas.route('/doctor/:id')
   .get(DoctorCtrl.findById)
   .put(DoctorCtrl.updateDoctor)
   .delete(DoctorCtrl.deleteDoctor);
 
-visitadores.route('/mutualistas')
+rutas.route('/mutualistas')
   .get(MutualistaCtrl.findAllMutualistas)
   .post(MutualistaCtrl.addMutualista);
 
-visitadores.route('/mutualista/:id')
+rutas.route('/mutualista/:id')
  .get(MutualistaCtrl.findById)
  .put(MutualistaCtrl.updateMutualista)
  .delete(MutualistaCtrl.deleteMutualista);
 
-visitadores.route('/especialidades')
+rutas.route('/especialidades')
   .get(EspecialidadCtrl.findAllEspecialidades)
   .post(EspecialidadCtrl.addEspecialidad);
 
-visitadores.route('/especialidad/:id')
+rutas.route('/especialidad/:id')
 .get(EspecialidadCtrl.findById)
 .put(EspecialidadCtrl.updateEspecialidad)
 .delete(EspecialidadCtrl.deleteEspecialidad);
 
-visitadores.route('/sucursales')
+rutas.route('/sucursales')
+  .get(SucursalCtrl.findAllSucursales)
   .post(SucursalCtrl.addSucursal);
 
+rutas.route('/sucursal/:id')
+  .get(SucursalCtrl.findById)
+  .put(SucursalCtrl.updateSucursal)
+  .delete(SucursalCtrl.deleteSucursal);
+
+rutas.route('/visitadores')
+  .post(VisitadorCtrl.addVisitador);
 
 
-
-
-app.use('/api', visitadores);
+app.use('/api', rutas);
   
 // Start server
 app.listen(3000, function() {
